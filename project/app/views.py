@@ -88,3 +88,8 @@ class studentViewset(viewsets.ViewSet):
         obj = studentModel.objects.get(roll=pk)
         obj.delete()
         return Response(data={'message': 'data deleted successfully'}, status=status.HTTP_200_OK)
+
+# view using class based modelviewset
+class studentModelViewset(viewsets.ModelViewSet):
+    queryset = studentModel.objects.all()
+    serializer_class = studentSerializer

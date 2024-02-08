@@ -18,10 +18,11 @@ from django.contrib import admin
 from django.urls import path,include
 
 #urls for viewset
-from app.views import studentViewset
+from app.views import studentViewset,studentModelViewset
 from rest_framework.routers import DefaultRouter
 router = DefaultRouter()
 router.register('vs',studentViewset,basename='viewset')
+router.register('mvs',studentModelViewset,basename='ModelViewset')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
