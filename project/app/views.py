@@ -2,7 +2,7 @@ from rest_framework.decorators import api_view,APIView
 from rest_framework.response import Response
 from .models import studentModel
 from .serializations import studentSerializer
-from rest_framework import status,viewsets
+from rest_framework import status,viewsets,generics
 
 #function based api_view
 @api_view(['GET'])
@@ -91,5 +91,42 @@ class studentViewset(viewsets.ViewSet):
 
 # view using class based modelviewset
 class studentModelViewset(viewsets.ModelViewSet):
+    queryset = studentModel.objects.all()
+    serializer_class = studentSerializer
+
+#generic view
+class studentListAPIView(generics.ListAPIView):
+    queryset = studentModel.objects.all()
+    serializer_class = studentSerializer
+
+class studentCreateAPIView(generics.CreateAPIView):
+    queryset = studentModel.objects.all()
+    serializer_class = studentSerializer
+
+class studentListCreateAPIView(generics.ListCreateAPIView):
+    queryset = studentModel.objects.all()
+    serializer_class = studentSerializer
+
+class studentRetrieveAPIView(generics.RetrieveAPIView):
+    queryset = studentModel.objects.all()
+    serializer_class = studentSerializer
+
+class studentUpdateAPIView(generics.UpdateAPIView):
+    queryset = studentModel.objects.all()
+    serializer_class = studentSerializer
+
+class studentDestroyAPIView(generics.DestroyAPIView):
+    queryset = studentModel.objects.all()
+    serializer_class = studentSerializer
+
+class studentRetrieveDestroyAPIView(generics.RetrieveDestroyAPIView):
+    queryset = studentModel.objects.all()
+    serializer_class = studentSerializer
+
+class studentRetrieveUpdateAPIView(generics.RetrieveUpdateAPIView):
+    queryset = studentModel.objects.all()
+    serializer_class = studentSerializer
+
+class studentRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = studentModel.objects.all()
     serializer_class = studentSerializer
